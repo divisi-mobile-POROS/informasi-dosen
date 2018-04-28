@@ -1,6 +1,6 @@
 # Informasi Dosen
 Repo ini bertujuan untuk lebih mengenali dosen
-
+By Me
 # Feature
 * Melihat informasi dosen
 * Menambah tips dan saran
