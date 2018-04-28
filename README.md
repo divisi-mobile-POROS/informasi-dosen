@@ -1,6 +1,7 @@
 # Informasi Dosen
-Repo ini bertujuan untuk lebih mengenali dosen
-By Me
+
+Repo ini bertujuan untuk lebih mengenali dosen, beserta dengan tips saat menemui dosen.
+
 # Feature
 * Melihat informasi dosen
 * Menambah tips dan saran
