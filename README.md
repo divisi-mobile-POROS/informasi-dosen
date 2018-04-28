@@ -1,6 +1,6 @@
 # Informasi Dosen
-Repo ini bertujuan untuk lebih mengenali dosen
-Repo ini untuk lebih mengerti informasi tentang dosen
+
+Repo ini bertujuan untuk lebih mengenali dosen, beserta dengan tips saat menemui dosen.
 
 # Feature
 * Melihat informasi dosen
@@ -17,11 +17,15 @@ Repo ini untuk lebih mengerti informasi tentang dosen
 *
 *
 ### View
+*
+*
 ## SubmitInfoDosenActivity
 ### Presenter
-*
+* saveInfoDosen
 *
 ### View
+*
+*
 
 
 
