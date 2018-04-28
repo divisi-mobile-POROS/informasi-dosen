@@ -16,9 +16,11 @@ Repo ini bertujuan untuk lebih mengenali dosen
 *
 *
 ### View
+*
+*
 ## SubmitInfoDosenActivity
 ### Presenter
-*
+* saveInfoDosen
 *
 ### View
 *
