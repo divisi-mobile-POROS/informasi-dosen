@@ -2,6 +2,8 @@
 
 Repo ini bertujuan untuk lebih mengenali dosen, beserta dengan tips saat menemui dosen.
 
+Repo ini bertujuan untuk lebih mengenali dosen, beserta dengan tips saat menemui dosen.
+UbahS
 # Feature
 * Melihat informasi dosen
 * Menambah tips dan saran
