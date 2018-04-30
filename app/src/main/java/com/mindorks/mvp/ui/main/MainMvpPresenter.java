@@ -16,6 +16,8 @@
 
 package com.mindorks.mvp.ui.main;
 
+import android.support.v7.widget.RecyclerView;
+
 import com.mindorks.mvp.ui.base.MvpPresenter;
 
 /**
@@ -28,5 +30,5 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
 
     void setUserLoggedOut();
 
-    void getDosenData();
+    void getDosenData(MainAdapter mainAdapter, RecyclerView recyclerView);
 }
