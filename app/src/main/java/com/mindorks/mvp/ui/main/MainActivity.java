@@ -25,6 +25,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -47,6 +48,7 @@ public class MainActivity extends Activity implements MainMvpView {
     TextView textViewShow;
     Button buttonLogout;
     MainPresenter mainPresenter;
+    private AutoCompleteTextView autoCompleteTextView;
 
     private RecyclerView recyclerView;
     private MainAdapter mainAdapter;
@@ -67,6 +69,7 @@ public class MainActivity extends Activity implements MainMvpView {
         mainPresenter.onAttach(this);
 
         textViewShow = (TextView) findViewById(R.id.textViewShow);
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
 
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
 
@@ -83,7 +86,7 @@ public class MainActivity extends Activity implements MainMvpView {
             }
         });
 
-        mainPresenter.getDosenData(mainAdapter, recyclerView);
+        mainPresenter.getDosenData(mainAdapter, recyclerView, autoCompleteTextView, getApplicationContext());
     }
 
     @Override

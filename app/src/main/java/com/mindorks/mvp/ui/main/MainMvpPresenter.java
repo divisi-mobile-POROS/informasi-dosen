@@ -16,7 +16,9 @@
 
 package com.mindorks.mvp.ui.main;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.widget.AutoCompleteTextView;
 
 import com.mindorks.mvp.ui.base.MvpPresenter;
 
@@ -30,5 +32,5 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
 
     void setUserLoggedOut();
 
-    void getDosenData(MainAdapter mainAdapter, RecyclerView recyclerView);
+    void getDosenData(MainAdapter mainAdapter, RecyclerView recyclerView, AutoCompleteTextView autoCompleteTextView, Context context);
 }

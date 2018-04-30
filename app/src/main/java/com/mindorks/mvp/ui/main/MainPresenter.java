@@ -17,9 +17,12 @@
 package com.mindorks.mvp.ui.main;
 
 import android.app.Service;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -31,6 +34,7 @@ import com.mindorks.mvp.ui.base.BasePresenter;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +47,9 @@ import static android.content.ContentValues.TAG;
  */
 
 public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> implements MainMvpPresenter<V> {
+
+    ArrayAdapter<String> adapter;
+
 
     public MainPresenter(DataManager dataManager) {
         super(dataManager);
@@ -60,7 +67,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     }
 
     @Override
-    public void getDosenData(final MainAdapter mainAdapter, final RecyclerView recyclerView) {
+    public void getDosenData(final MainAdapter mainAdapter, final RecyclerView recyclerView, final AutoCompleteTextView autoCompleteTextView, final Context context) {
         ApiHelper service = ApiClient.createService(ApiHelper.class);
 
         Call<String> call = service.getDosenData();
@@ -78,8 +85,23 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
                     DosenResponse dosenResponse = gson.fromJson(text, DosenResponse.class);
                     Log.d(TAG, "onResponse: "+dosenResponse.getDosen().get(0).getNama());
                     Log.d(TAG, "onResponse: "+dosenResponse.getDosen().size());
+
+
+                    String[] namaDosen = new String[dosenResponse.getDosen().size()];
+
+                    for (int i = 0; i < dosenResponse.getDosen().size(); i++) {
+                        namaDosen[i] = dosenResponse.getDosen().get(i).getNama();
+                    }
                     mainAdapter.addItem(dosenResponse);
                     recyclerView.setAdapter(mainAdapter);
+                    String[] COUNTRIES = new String[] {
+                            "Belgium", "France", "Italy", "Germany", "Spain"
+                    };
+
+
+                    adapter  = new ArrayAdapter<String>(context,
+                            android.R.layout.simple_dropdown_item_1line, namaDosen);
+                    autoCompleteTextView.setAdapter(adapter);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
