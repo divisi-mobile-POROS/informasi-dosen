@@ -21,6 +21,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +31,10 @@ import android.widget.TextView;
 import com.mindorks.mvp.MvpApp;
 import com.mindorks.mvp.R;
 import com.mindorks.mvp.data.DataManager;
+import com.mindorks.mvp.model.DosenResponse;
 import com.mindorks.mvp.ui.splash.SplashActivity;
+
+import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
@@ -42,6 +47,10 @@ public class MainActivity extends Activity implements MainMvpView {
     TextView textViewShow;
     Button buttonLogout;
     MainPresenter mainPresenter;
+
+    private RecyclerView recyclerView;
+    private MainAdapter mainAdapter;
+    private ArrayList<DosenResponse> dosenResponses;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -63,6 +72,10 @@ public class MainActivity extends Activity implements MainMvpView {
 
         textViewShow.setText(mainPresenter.getEmailId());
 
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mainAdapter = new MainAdapter(this);
+
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +83,7 @@ public class MainActivity extends Activity implements MainMvpView {
             }
         });
 
-        mainPresenter.getDosenData();
+        mainPresenter.getDosenData(mainAdapter, recyclerView);
     }
 
     @Override

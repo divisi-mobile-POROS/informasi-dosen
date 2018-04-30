@@ -17,6 +17,7 @@
 package com.mindorks.mvp.ui.main;
 
 import android.app.Service;
+import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
@@ -59,7 +60,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     }
 
     @Override
-    public void getDosenData() {
+    public void getDosenData(final MainAdapter mainAdapter, final RecyclerView recyclerView) {
         ApiHelper service = ApiClient.createService(ApiHelper.class);
 
         Call<String> call = service.getDosenData();
@@ -77,6 +78,8 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
                     DosenResponse dosenResponse = gson.fromJson(text, DosenResponse.class);
                     Log.d(TAG, "onResponse: "+dosenResponse.getDosen().get(0).getNama());
                     Log.d(TAG, "onResponse: "+dosenResponse.getDosen().size());
+                    mainAdapter.addItem(dosenResponse);
+                    recyclerView.setAdapter(mainAdapter);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
