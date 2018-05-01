@@ -1,6 +1,8 @@
 package com.mindorks.mvp.ui.main;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +14,9 @@ import android.widget.Toast;
 
 import com.mindorks.mvp.R;
 import com.mindorks.mvp.model.DosenResponse;
+import com.mindorks.mvp.ui.detail.DetailActivity;
+
+import java.io.Serializable;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
@@ -41,6 +46,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, dosen.getDosen().get(position).getJabatan(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, DetailActivity.class);
+                Bundle args = new Bundle();
+                args.putSerializable("DOSEN", (Serializable) dosen.getDosen().get(position));
+                intent.putExtra("BUNDLE", args);
+                context.startActivity(intent);
             }
         });
     }

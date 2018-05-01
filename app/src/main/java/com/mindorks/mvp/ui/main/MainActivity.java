@@ -33,6 +33,7 @@ import com.mindorks.mvp.MvpApp;
 import com.mindorks.mvp.R;
 import com.mindorks.mvp.data.DataManager;
 import com.mindorks.mvp.model.DosenResponse;
+import com.mindorks.mvp.ui.detail.DetailActivity;
 import com.mindorks.mvp.ui.splash.SplashActivity;
 
 import java.util.ArrayList;
@@ -94,5 +95,11 @@ public class MainActivity extends Activity implements MainMvpView {
         Intent intent = SplashActivity.getStartIntent(this);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void openDetailActivity() {
+        Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+        startActivity(intent);
     }
 }

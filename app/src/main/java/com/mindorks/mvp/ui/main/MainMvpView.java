@@ -26,4 +26,6 @@ public interface MainMvpView extends MvpView {
 
     void openSplashActivity();
 
+    void openDetailActivity();
+
 }
