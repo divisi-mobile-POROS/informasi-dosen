@@ -1,4 +1,4 @@
 package com.mindorks.mvp.ui.detail;
 
-public class DetailPresenter {
+public class DetailPresenter implements DetailMvpPresenter{
 }

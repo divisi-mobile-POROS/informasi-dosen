@@ -11,7 +11,7 @@ import com.mindorks.mvp.model.Dosen;
 
 import java.util.ArrayList;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements DetailMvpView{
 
     private TextView tvNama, tvEmail, tvRuangan;
 
